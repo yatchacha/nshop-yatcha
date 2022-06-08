@@ -45,6 +45,7 @@ const DataOutput = ({ data }) => {
         borderRadius="md"
         overflow="hidden"
         height="calc(100vh - 100px)"
+        style={{ overflow: 'auto' }}
       >
         {data.outputLoading && (
           <Flex alignItems="center" justifyContent="center" mt={5}>
