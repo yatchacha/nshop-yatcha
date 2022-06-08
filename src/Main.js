@@ -5,6 +5,7 @@ import DataProcess from './Components/DataProcess';
 import DataOutput from './Components/DataOutput';
 
 const Main = () => {
+  const [sort, setSort] = useState('sim');
   const [inputText, setInputText] = useState('');
   const [input, setInput] = useState([]);
   const [inputButton, setInputButton] = useState(false);
@@ -33,6 +34,8 @@ const Main = () => {
         <DataProcess
           data={{
             input,
+            sort,
+            setSort,
             search,
             setSearch,
             cursor,

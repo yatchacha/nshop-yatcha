@@ -34,13 +34,14 @@ const DataProcess = ({ data }) => {
       const url =
         'https://api.yatchacha.com/shopping?keyword=' +
         keyword +
-        '&display=100';
+        '&display=100&sort=' +
+        data.sort;
       axios.get(url).then(Response => {
         data.setSearch(Response.data.items);
       });
       data.setCursorTitle(keyword);
     }
-  }, [data.cursor]);
+  }, [data.cursor, data.sort]);
 
   const init = async () => {
     data.setOutputLoading(true);
@@ -88,6 +89,30 @@ const DataProcess = ({ data }) => {
         <Heading size="lg">데이터 선택하기</Heading>
         <Text>{data.cursorTitle}</Text>
         <Flex alignItems="center">
+          <Button
+            mr={2}
+            onClick={() => {
+              if (data.sort === 'sim') {
+                data.setSort('date');
+              } else if (data.sort === 'date') {
+                data.setSort('asc');
+              } else if (data.sort === 'asc') {
+                data.setSort('dsc');
+              } else if (data.sort === 'dsc') {
+                data.setSort('sim');
+              }
+            }}
+          >
+            {data.sort === 'sim'
+              ? '유사도순'
+              : data.sort === 'date'
+              ? '날짜순'
+              : data.sort === 'asc'
+              ? '가격오름차순'
+              : data.sort === 'dsc'
+              ? '가격내림차순'
+              : ''}
+          </Button>
           <IconButton
             mr={2}
             aria-label="Back"
