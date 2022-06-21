@@ -18,7 +18,11 @@ const DataOutput = ({ data }) => {
   const copy = () => {
     let outputString = '';
     data.output.map(item => {
-      outputString += item.lprice.toString() + '\n';
+      if (item.lprice === undefined) {
+        outputString += '0\n';
+      } else {
+        outputString += item.lprice.toString() + '\n';
+      }
     });
     setOutputStr(outputString);
   };
@@ -67,7 +71,9 @@ const DataOutput = ({ data }) => {
                 <Flex flexDirection="column" ml={1} w="100%">
                   <Text fontSize={14}>검색어 : {data.input[count - 1]}</Text>
                   <Heading size="md">
-                    {item.title.replace(htmlPattern, '')} - {item.mallName}
+                    {item.title === undefined ||
+                      item.title.replace(htmlPattern, '')}{' '}
+                    - {item.mallName}
                   </Heading>
                   <Flex
                     flexDirection="row"
