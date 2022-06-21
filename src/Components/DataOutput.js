@@ -33,7 +33,11 @@ const DataOutput = ({ data }) => {
 
   return (
     <>
-      <Flex justifyContent="space-between" style={{ height: '50px' }}>
+      <Flex
+        justifyContent="space-between"
+        style={{ height: '50px' }}
+        alignItems="center"
+      >
         <Heading size="lg">데이터 출력하기</Heading>
         <CopyToClipboard
           text={outputStr}

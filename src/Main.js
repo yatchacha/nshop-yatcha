@@ -14,53 +14,65 @@ const Main = () => {
   const [cursorTitle, setCursorTitle] = useState('');
   const [output, setOutput] = useState([]);
   const [outputLoading, setOutputLoading] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState('입력 대기중');
 
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={6} p={3}>
-      <GridItem w="100%" h="10">
-        <DataInput
-          data={{
-            input,
-            setInput,
-            inputButton,
-            setInputButton,
-            setOutput,
-            inputText,
-            setInputText,
-          }}
-        ></DataInput>
-      </GridItem>
-      <GridItem w="100%" h="10" colSpan={2}>
-        <DataProcess
-          data={{
-            input,
-            sort,
-            setSort,
-            search,
-            setSearch,
-            cursor,
-            setCursor,
-            output,
-            setOutput,
-            setOutputLoading,
-            cursorTitle,
-            setCursorTitle,
-          }}
-        ></DataProcess>
-      </GridItem>
-      <GridItem w="100%" h="10">
-        <DataOutput
-          data={{
-            input,
-            output,
-            setOutput,
-            outputLoading,
-            setOutputLoading,
-            setCursor,
-          }}
-        ></DataOutput>
-      </GridItem>
-    </Grid>
+    <>
+      <Grid templateColumns="repeat(4, 1fr)" gap={6} p={3}>
+        <GridItem w="100%" h="100%">
+          <DataInput
+            data={{
+              input,
+              setInput,
+              inputButton,
+              setInputButton,
+              setOutput,
+              inputText,
+              setInputText,
+              setCurrentStatus,
+            }}
+          ></DataInput>
+        </GridItem>
+        <GridItem w="100%" h="100%" colSpan={2}>
+          <DataProcess
+            data={{
+              input,
+              sort,
+              setSort,
+              search,
+              setSearch,
+              cursor,
+              setCursor,
+              output,
+              setOutput,
+              setOutputLoading,
+              cursorTitle,
+              setCursorTitle,
+              setCurrentStatus,
+            }}
+          ></DataProcess>
+        </GridItem>
+        <GridItem w="100%" h="100%">
+          <DataOutput
+            data={{
+              input,
+              output,
+              setOutput,
+              outputLoading,
+              setOutputLoading,
+              setCursor,
+              setCurrentStatus,
+            }}
+          ></DataOutput>
+        </GridItem>
+        <GridItem
+          colSpan={4}
+          style={{ marginTop: '-18px', fontSize: '14px', marginBottom: '0px' }}
+        >
+          현재상황 : {currentStatus}
+        </GridItem>
+      </Grid>
+    </>
   );
 };
 

@@ -36,8 +36,10 @@ const DataProcess = ({ data }) => {
         keyword +
         '&display=100&sort=' +
         data.sort;
+      data.setCurrentStatus('데이터 로딩 시작');
       axios.get(url).then(Response => {
         data.setSearch(Response.data.items);
+        data.setCurrentStatus('데이터 로딩 완료');
       });
       data.setCursorTitle(keyword);
     }
@@ -59,11 +61,13 @@ const DataProcess = ({ data }) => {
             dataResult = Response.data.items[0];
           }
           dataTotal.push(dataResult);
+          data.setCurrentStatus(i + 1 + '번째 데이터 로딩 완료');
         });
     }
     data.setOutput(dataTotal);
     data.setOutputLoading(false);
     data.setCursor(1);
+    data.setCurrentStatus('데이터 로딩 완료');
   };
 
   const pick = (target, item) => {
