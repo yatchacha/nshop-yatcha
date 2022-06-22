@@ -19,9 +19,9 @@ const DataOutput = ({ data }) => {
     let outputString = '';
     data.output.map(item => {
       if (item.lprice === undefined) {
-        outputString += '0\n';
+        outputString += '0\t';
       } else {
-        outputString += item.lprice.toString() + '\n';
+        outputString += item.lprice.toString() + '\t';
       }
     });
     setOutputStr(outputString);
